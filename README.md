@@ -1,3 +1,3 @@
 # Hangman
 
-A classic Hangman word-guessing game.
+Create a hangman game to have a better understanding of OOP
