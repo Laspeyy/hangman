@@ -1,20 +1,19 @@
 public class Game {
-
-    private boolean guessStatus;
-    private boolean letterInWord;
-
-    public boolean getGuessStatus() {
-        return this.guessStatus;
+    
+    Word word = new Word();
+    gameWord = word.getWord();
+    public boolean guessInWord(String gameWord,char[] arr,char guess) {
+        boolean guessInWord = false;
+        for(int i = 0;i < word.length();i++){
+            if(guess == gameWord.charAt(i)){
+                return guessInWord = true;
+            }
+        }
     }
-
-    public void setGuessStatus(boolean guessStatus) {
-        this.guessStatus;
-    }
-
-    public boolean getLetterInWord() {
-        return letterInWord;
-    }
-
-    public void setLetterInWord(boolean letterInWord) {
+    public char[] gameInitialize(char[] arr){
+        for(int i = 0;i<arr.length;i++){
+            arr[i] = '_';
+        }
+        return arr;
     }
 }

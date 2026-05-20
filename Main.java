@@ -1,29 +1,21 @@
 import java.util.Scanner;
 public class Main {
 
+
     public static void main(String[] args) {
-        Word word = new Word();
+        Game game = new Game();
+        User user = new User();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Hangman, Input Y to Play");
         String randWord = word.getWord();
         char[] arr = new char[randWord.length()];
         arr = wordInitial(arr);
         boolean Start = true;
+        
         while(Start){
-            
-            
-            
             
             Start = false;
         }
-        System.out.println(randWord);
-        System.out.println();
-        for(char s : arr){
-            System.out.print(s + " ");
-
-       }
-       
-
         /**
          * TODO:Player guesses letter
          * TODO:If letter is in the word then _ is changed to which letter the word has
@@ -33,21 +25,27 @@ public class Main {
          */
         scanner.close();
     }
-   
-    public static char[] wordInitial(char[] arr){
-        for(int i = 0;i<arr.length;i++){
-            arr[i] = '_';
+    // Move this into the game class to keep main cleaner
+    public static char[] guessWord(char guess,char[] arr, String word){
+        
+        if(guessInWord){
+            for(int i = 0; i < arr.length;i++){
+                if(word.charAt(i) == guess){
+                    arr[i] = guess;
+                }
+            }
+        }
+        else{
+            Game.lostLife();
         }
         return arr;
+        
+        
+        /**
+         * else deduct 1 health from lives and return arr
+         * How many lives are left
+         * whether the game should stop
+         */
+
     }
 }
-
-
-
-
-
-
-
-
-
-
