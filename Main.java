@@ -6,15 +6,24 @@ public class Main {
         Game game = new Game();
         Word word = new Word();
         Scanner scanner = new Scanner(System.in);
+        char userGuess = ' ';
         System.out.println("Welcome to Hangman");
         String randWord = word.getWord();
         char[] arr = new char[randWord.length()];
         arr = game.gameInitialize(arr);
         System.out.println(arr);
         boolean Start = true;
-        
+        //     public char[] playerGuess(String gameWord,char[] arr,char guess) {
+
         while(Start){
-            Start = false;
+            //System.out.printf("You have %d lives remaining",game.getLives());
+            System.out.println("Guess a letter"); 
+            userGuess = scanner.next().charAt(0);
+            arr = game.playerGuess(randWord,arr,userGuess);
+            if(!game.gameStatus(arr)){
+                break;
+            }
+            System.out.println(arr);
         }
         /**
          * TODO:Player guesses letter
