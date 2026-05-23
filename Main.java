@@ -2,6 +2,13 @@ import java.util.Scanner;
 public class Main {
 
 
+    /**
+     * Runs a single Hangman round: picks a word, initializes the board,
+     * prompts for letter guesses, updates the board, and exits when the player
+     * wins or runs out of lives.
+     *
+     * @param args unused command-line arguments
+     */
     public static void main(String[] args) {
         Game game = new Game();
         Word word = new Word();
@@ -13,25 +20,18 @@ public class Main {
         arr = game.gameInitialize(arr);
         System.out.println(arr);
         boolean Start = true;
-        //     public char[] playerGuess(String gameWord,char[] arr,char guess) {
-
+        
         while(Start){
-            //System.out.printf("You have %d lives remaining",game.getLives());
+            System.out.printf("You have %d lives remaining",game.user.getLives());
+            System.out.println();
             System.out.println("Guess a letter"); 
             userGuess = scanner.next().charAt(0);
             arr = game.playerGuess(randWord,arr,userGuess);
             if(!game.gameStatus(arr)){
-                break;
+                Start = false;
             }
             System.out.println(arr);
         }
-        /**
-         * TODO:Player guesses letter
-         * TODO:If letter is in the word then _ is changed to which letter the word has
-         * TODO:If letter is not in word lives decrease
-         * TODO:Lives < 0 then game ends 
-         * TODO:If word is guessed before lives run out, player wins
-         */
         scanner.close();
     }
 }
